@@ -2,7 +2,15 @@ var http = require('http');
 var http = require('follow-redirects').http;
 var read_line = require('readline');
 var exec = require('child_process').exec;
+var user = ''
 
+//Check input arguments
+if (process.argv.length == 3){
+    user = process.argv[2]
+} else if(process.argv.length > 3) {
+    console.log('Please Check Input Arguments');
+    process.exit(1);
+}
 
 // Setting up readline
 const rl = read_line.createInterface({
@@ -10,13 +18,14 @@ const rl = read_line.createInterface({
     output: process.stdout
 });
 
-console.log('Getting from github')
+console.log('Getting from '+ user +  's github')
+
 
 var options = {
     host: 'api.github.com',
-    path: '/users/Oscar-Rydh/repos',
+    path: '/users/' + user + '/repos',
     headers: {
-        'User-Agent': 'Oscar-Rydh'
+        'User-Agent': user
     }
 };
 
