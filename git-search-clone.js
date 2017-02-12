@@ -20,7 +20,7 @@ var options = {
     }
 };
 
-request = function(response) {
+request = function(response, callback) {
     var data = '';
     //Store data
     response.on('data', function (chunk) {
@@ -51,16 +51,17 @@ request = function(response) {
                 exec('git clone ' + repo, function (err, stdout, stderr) {
                     if (err) {
                         console.log('Got error: ' + err)
-                        return
+                        process.exit(1)
                     }
                     console.log('Cloning: ' + repo)
-                    return
+                    process.exit(0)
                 });
             } else {
                 console.log('Could not load find repository')
-                return
+                process.exit(0)
             }
         })
+
     });
 }
 
