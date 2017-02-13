@@ -45,7 +45,6 @@ request = function(response, callback) {
             split_string = combined_split.split('repos/');
             combined_split = split_string[0] + split_string[1]
             all_repo_urls.push(combined_split)
-            console.log(combined_split)
         }
 
 
